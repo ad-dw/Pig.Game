@@ -1,10 +1,24 @@
 "use strict";
 
-let randomDiceNumber = 1;
+let randomDiceNumber;
+let activePlayer = 0;
+let currentScore = 0;
 
 const elements = document.querySelectorAll(".num");
 const rollBtn = document.querySelector(".btn--roll");
 const dice = document.querySelector(".dice");
+const currentScoreElementGetter = function (activePlayerNumber) {
+  const currentScoreElement = document.querySelector(
+    `#current--${activePlayerNumber}`
+  );
+  return currentScoreElement;
+};
+
+const updateCurrentScore = function () {
+  currentScore += randomDiceNumber;
+  const currentScoreEl = currentScoreElementGetter(activePlayer);
+  currentScoreEl.textContent = currentScore;
+};
 
 const changeDiceUI = function () {
   for (let i = 0; i < elements.length; i++) {
@@ -14,6 +28,7 @@ const changeDiceUI = function () {
       elements[i].style.visibility = "hidden";
     }
   }
+  updateCurrentScore();
 };
 
 const rollTheDice = function () {
@@ -27,5 +42,4 @@ const rollTheDice = function () {
   }, 1000);
 };
 
-changeDiceUI();
 rollBtn.addEventListener("click", rollTheDice);
