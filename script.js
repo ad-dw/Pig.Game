@@ -14,10 +14,17 @@ const currentScoreElementGetter = function (activePlayerNumber) {
   return currentScoreElement;
 };
 
+const switchPlayer = function () {
+  activePlayer = activePlayer === 0 ? 1 : 0;
+  document.querySelector(".player--0").classList.toggle("player--active");
+  document.querySelector(".player--1").classList.toggle("player--active");
+};
+
 const updateCurrentScore = function () {
-  currentScore += randomDiceNumber;
+  currentScore = randomDiceNumber === 1 ? 0 : currentScore + randomDiceNumber;
   const currentScoreEl = currentScoreElementGetter(activePlayer);
   currentScoreEl.textContent = currentScore;
+  randomDiceNumber === 1 && switchPlayer();
 };
 
 const changeDiceUI = function () {
