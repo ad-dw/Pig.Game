@@ -22,6 +22,10 @@ body {
   justify-content: center;
 }
 
+.btn:disabled {
+  cursor: not-allowed;
+}
+
 /* LAYOUT */
 main {
   position: relative;

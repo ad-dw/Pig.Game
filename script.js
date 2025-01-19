@@ -28,13 +28,24 @@ const switchPlayer = function () {
   document.querySelector(".player--1").classList.toggle("player--active");
 };
 
+//Declares win once any player wins and changes UI accordigly.
+const declareWin = function () {
+  document
+    .querySelector(`.player--${activePlayer}`)
+    .classList.add("player--winner");
+  rollBtn.disabled = true;
+  holdBtn.disabled = true;
+};
+
 //updates current score of active player
 const updateCurrentScore = function (holdScore = false) {
   currentScore =
     holdScore || randomDiceNumber === 1 ? 0 : currentScore + randomDiceNumber;
   const currentScoreEl = currentScoreElementGetter(activePlayer);
   currentScoreEl.textContent = currentScore;
-  (holdScore || randomDiceNumber === 1) && switchPlayer();
+  if (holdScore || randomDiceNumber === 1) {
+    currentScore < 20 && switchPlayer();
+  }
 };
 
 //updates total score of the active player
@@ -42,6 +53,9 @@ const updateTotalScore = function () {
   score[activePlayer] += currentScore;
   document.querySelector(`#score--${activePlayer}`).textContent =
     score[activePlayer];
+  if (currentScore >= 20) {
+    declareWin();
+  }
 };
 
 //changes the dice UI once dice is rolled
@@ -58,6 +72,7 @@ const changeDiceUI = function () {
 
 //generates random dice roll and does dice animation
 const rollTheDice = function () {
+  rollBtn.disabled = true;
   randomDiceNumber = Math.trunc(Math.random() * 6) + 1;
   dice.classList.remove("hidden");
   dice.style.animation = "none";
@@ -65,6 +80,7 @@ const rollTheDice = function () {
   setTimeout(() => {
     dice.style.animation = "none";
     changeDiceUI();
+    rollBtn.disabled = false;
   }, 1000);
 };
 
@@ -76,4 +92,5 @@ const handleHoldScore = function () {
 
 //adding the event listeners to roll dice & hold score buttons
 rollBtn.addEventListener("click", rollTheDice);
+
 holdBtn.addEventListener("click", handleHoldScore);
