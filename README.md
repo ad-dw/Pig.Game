@@ -29,7 +29,7 @@ This is a simple two-player dice game where the first player to reach 100 points
 
 # 🚀 Tech Stack
 
-- Frontend: (HTML, CSS, JavaScript) - For the user interface.
+- Frontend: (HTML, CSS, JavaScript) - For the user interface and game logic.
 
 # 🛠️ Setup & Run Instructions
 
