@@ -7,6 +7,9 @@ let currentScore = 0;
 //This is the final score for both players.
 const score = [0, 0];
 
+//Indicates if the game is going on or not.
+let playing = true;
+
 //selected all necssary DOM elements in one place not to repeat this code
 const elements = document.querySelectorAll(".num");
 const rollBtn = document.querySelector(".btn--roll");
@@ -30,6 +33,7 @@ const switchPlayer = function () {
 
 //Declares win once any player wins and changes UI accordigly.
 const declareWin = function () {
+  playing = false;
   document
     .querySelector(`.player--${activePlayer}`)
     .classList.add("player--winner");
@@ -44,7 +48,7 @@ const updateCurrentScore = function (holdScore = false) {
   const currentScoreEl = currentScoreElementGetter(activePlayer);
   currentScoreEl.textContent = currentScore;
   if (holdScore || randomDiceNumber === 1) {
-    currentScore < 20 && switchPlayer();
+    playing && switchPlayer();
   }
 };
 
@@ -53,7 +57,7 @@ const updateTotalScore = function () {
   score[activePlayer] += currentScore;
   document.querySelector(`#score--${activePlayer}`).textContent =
     score[activePlayer];
-  if (currentScore >= 20) {
+  if (currentScore >= 100) {
     declareWin();
   }
 };
