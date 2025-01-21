@@ -20,18 +20,18 @@ This is a simple two-player dice game where the first player to reach 100 points
 
 - The first player to reach a total score of 100 or more wins the game!
 
-# 📦 Features
+# 📦 Features:
 
 - Two-player turn-based gameplay.
 - Strategic decision-making with the "Hold" option.
 - Risk management when rolling the dice.
 - Simple and engaging mechanics.
 
-# 🚀 Tech Stack
+# 🚀 Tech Stack:
 
 - Frontend: (HTML, CSS, JavaScript) - For the user interface and game logic.
 
-# 🛠️ Setup & Run Instructions
+# 🛠️ Setup & Run Instructions:
 
 - Clone the repository:
 
@@ -42,6 +42,6 @@ This is a simple two-player dice game where the first player to reach 100 points
 - Navigate to the project folder:
 - Open the index.html in your browser or follow setup instructions.
 
-# 🌟 Contributing
+# 🌟 Contributing:
 
 Contributions are welcome! Feel free to submit a pull request or open an issue to suggest improvements or report bugs.
