@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 
 let randomDiceNumber;
 let activePlayer = 0;
@@ -14,6 +14,7 @@ let playing = true;
 const elements = document.querySelectorAll(".num");
 const rollBtn = document.querySelector(".btn--roll");
 const holdBtn = document.querySelector(".btn--hold");
+const newBtn = document.querySelector(".btn--new");
 const dice = document.querySelector(".dice");
 
 //provides the current score DOM element for active player
@@ -25,10 +26,14 @@ const currentScoreElementGetter = function () {
 };
 
 //switches the player
-const switchPlayer = function () {
-  activePlayer = activePlayer === 0 ? 1 : 0;
-  document.querySelector(".player--0").classList.toggle("player--active");
-  document.querySelector(".player--1").classList.toggle("player--active");
+const switchPlayer = function (currentPlayer) {
+  activePlayer = currentPlayer ?? (activePlayer === 0 ? 1 : 0);
+  document
+    .querySelector(`.player--${activePlayer}`)
+    .classList.add("player--active");
+  document
+    .querySelector(`.player--${activePlayer === 0 ? 1 : 0}`)
+    .classList.remove("player--active");
 };
 
 //Declares win once any player wins and changes UI accordigly.
@@ -42,13 +47,18 @@ const declareWin = function () {
 };
 
 //updates current score of active player
-const updateCurrentScore = function (holdScore = false) {
+const updateCurrentScore = function (
+  discardCurrentScore = false,
+  currentPlayer
+) {
   currentScore =
-    holdScore || randomDiceNumber === 1 ? 0 : currentScore + randomDiceNumber;
-  const currentScoreEl = currentScoreElementGetter(activePlayer);
+    discardCurrentScore || randomDiceNumber === 1
+      ? 0
+      : currentScore + randomDiceNumber;
+  const currentScoreEl = currentScoreElementGetter();
   currentScoreEl.textContent = currentScore;
-  if (holdScore || randomDiceNumber === 1) {
-    playing && switchPlayer();
+  if (discardCurrentScore || randomDiceNumber === 1) {
+    playing && switchPlayer(currentPlayer);
   }
 };
 
@@ -94,7 +104,16 @@ const handleHoldScore = function () {
   updateCurrentScore(true);
 };
 
+////handles reset game feature
+const handleResetGame = function () {
+  updateCurrentScore(true, 0);
+  currentScoreElementGetter().textContent = 0;
+  dice.classList.add("hidden");
+};
+
 //adding the event listeners to roll dice & hold score buttons
 rollBtn.addEventListener("click", rollTheDice);
 
 holdBtn.addEventListener("click", handleHoldScore);
+
+newBtn.addEventListener("click", handleResetGame);
