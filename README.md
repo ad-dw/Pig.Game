@@ -42,6 +42,6 @@ This is a simple two-player dice game where the first player to reach 100 points
 - Navigate to the project folder:
 - Open the index.html in your browser or follow setup instructions.
 
-# 🌟 Contributing:
+# 🌟 Contributing
 
 Contributions are welcome! Feel free to submit a pull request or open an issue to suggest improvements or report bugs.
