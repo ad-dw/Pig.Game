@@ -107,6 +107,9 @@ const handleHoldScore = function () {
 ////handles reset game feature
 const handleResetGame = function () {
   updateCurrentScore(true, 0);
+  score.fill(0);
+  document.querySelector("#score--0").textContent = 0;
+  document.querySelector("#score--1").textContent = 0;
   currentScoreElementGetter().textContent = 0;
   dice.classList.add("hidden");
 };
