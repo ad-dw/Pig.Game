@@ -67,7 +67,7 @@ const updateTotalScore = function () {
   score[activePlayer] += currentScore;
   document.querySelector(`#score--${activePlayer}`).textContent =
     score[activePlayer];
-  if (currentScore >= 100) {
+  if (currentScore >= 10) {
     declareWin();
   }
 };
@@ -106,12 +106,16 @@ const handleHoldScore = function () {
 
 ////handles reset game feature
 const handleResetGame = function () {
+  document
+    .querySelector(`.player--${activePlayer}`)
+    .classList.remove("player--winner");
+  currentScoreElementGetter().textContent = 0;
   updateCurrentScore(true, 0);
   score.fill(0);
   document.querySelector("#score--0").textContent = 0;
   document.querySelector("#score--1").textContent = 0;
-  currentScoreElementGetter().textContent = 0;
   dice.classList.add("hidden");
+  playing = true;
 };
 
 //adding the event listeners to roll dice & hold score buttons
