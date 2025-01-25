@@ -1,5 +1,4 @@
 // "use strict";
-
 let randomDiceNumber;
 let activePlayer = 0;
 let currentScore = 0;
