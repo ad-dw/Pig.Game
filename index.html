@@ -8,7 +8,7 @@
     <title>Pig Game. 🎲</title>
   </head>
   <body>
-    <main>
+    <main role="main" tabindex="0" aria-label="Pig game">
       <section class="player player--0 player--active">
         <h2 class="name" id="name--0">Player 1</h2>
         <p class="score" id="score--0">0</p>
@@ -41,9 +41,21 @@
           <span class="num num4 num5 num6" id="num7"></span>
         </div>
       </div>
-      <button class="btn btn--new">🔄 New game</button>
-      <button class="btn btn--roll">🎲 Roll dice</button>
-      <button class="btn btn--hold">📥 Hold</button>
+      <button
+        class="btn btn--new"
+        title="New game"
+        aria-label="New game"
+        aria-describedby="reset-game-desc"
+      >
+        🔄 New game
+      </button>
+      <span id="reset-game-desc">Reset the current game</span>
+      <button class="btn btn--roll" aria-label="roll dice" title="roll dice">
+        🎲 Roll dice
+      </button>
+      <button class="btn btn--hold" aria-label="hold score" title="hold score">
+        📥 Hold
+      </button>
     </main>
     <script src="script.js"></script>
   </body>
