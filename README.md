@@ -2,7 +2,7 @@
 
 This is a simple two-player dice game where the first player to reach 100 points wins! The game involves rolling dice, managing risk, and making strategic decisions.
 
-## 🎮 How to Play
+## 🎮 How to Play:
 
 #### 1. Roll the Dice
 

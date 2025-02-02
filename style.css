@@ -213,3 +213,9 @@ main {
     opacity: 1;
   }
 }
+
+#reset-game-desc {
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}

@@ -6,7 +6,7 @@ let currentScore = 0;
 //This is the final score for both players.
 const score = [0, 0];
 
-//Indicates if the game is going on or not.
+//indicates if the game is going on or not.
 let playing = true;
 
 //selected all necssary DOM elements in one place not to repeat this code
